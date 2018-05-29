@@ -74,7 +74,7 @@ model = ssd_300(image_size=(img_height, img_width, img_channels),
 # 2: Load some weights into the model.
 
 # TODO: Set the path to the weights you want to load.
-weights_path = 'path/to/VGG_ILSVRC_16_layers_fc_reduced.h5'
+weights_path = 'pretrained_models/VGG_ILSVRC_16_layers_fc_reduced.h5'
 
 model.load_weights(weights_path, by_name=True)
 
@@ -116,21 +116,21 @@ val_dataset = DataGenerator(load_images_into_memory=False, hdf5_dataset_path=Non
 # TODO: Set the paths to the datasets here.
 
 # The directories that contain the images.
-VOC_2007_images_dir      = '../../datasets/VOCdevkit/VOC2007/JPEGImages/'
-VOC_2012_images_dir      = '../../datasets/VOCdevkit/VOC2012/JPEGImages/'
+VOC_2007_images_dir      = '../datasets/VOC2007/JPEGImages/'
+VOC_2012_images_dir      = '../datasets/VOC2012/JPEGImages/'
 
 # The directories that contain the annotations.
-VOC_2007_annotations_dir      = '../../datasets/VOCdevkit/VOC2007/Annotations/'
-VOC_2012_annotations_dir      = '../../datasets/VOCdevkit/VOC2012/Annotations/'
+VOC_2007_annotations_dir      = '../datasets/VOC2007/Annotations/'
+VOC_2012_annotations_dir      = '../datasets/VOC2012/Annotations/'
 
 # The paths to the image sets.
-VOC_2007_train_image_set_filename    = '../../datasets/VOCdevkit/VOC2007/ImageSets/Main/train.txt'
-VOC_2012_train_image_set_filename    = '../../datasets/VOCdevkit/VOC2012/ImageSets/Main/train.txt'
-VOC_2007_val_image_set_filename      = '../../datasets/VOCdevkit/VOC2007/ImageSets/Main/val.txt'
-VOC_2012_val_image_set_filename      = '../../datasets/VOCdevkit/VOC2012/ImageSets/Main/val.txt'
-VOC_2007_trainval_image_set_filename = '../../datasets/VOCdevkit/VOC2007/ImageSets/Main/trainval.txt'
-VOC_2012_trainval_image_set_filename = '../../datasets/VOCdevkit/VOC2012/ImageSets/Main/trainval.txt'
-VOC_2007_test_image_set_filename     = '../../datasets/VOCdevkit/VOC2007/ImageSets/Main/test.txt'
+VOC_2007_train_image_set_filename    = '../datasets/VOC2007/ImageSets/Main/train.txt'
+VOC_2012_train_image_set_filename    = '../datasets/VOC2012/ImageSets/Main/train.txt'
+VOC_2007_val_image_set_filename      = '../datasets/VOC2007/ImageSets/Main/val.txt'
+VOC_2012_val_image_set_filename      = '../datasets/VOC2012/ImageSets/Main/val.txt'
+VOC_2007_trainval_image_set_filename = '../datasets/VOC2007/ImageSets/Main/trainval.txt'
+VOC_2012_trainval_image_set_filename = '../datasets/VOC2012/ImageSets/Main/trainval.txt'
+VOC_2007_test_image_set_filename     = '../datasets/VOC2007-test/VOCdevkit/VOC2007/ImageSets/Main/test.txt'
 
 # The XML parser needs to now what object class names to look for and in which order to map them to integers.
 classes = ['background',
