@@ -28,7 +28,7 @@ img_height = 300
 img_width = 300
 
 # TODO: Set the path to the `.h5` file of the model to be loaded.
-model_path = 'path/to/trained/model.h5'
+model_path = 'pretrained_models/final.h5'
 
 # We need to create an SSDLoss object in order to pass that to the model loader.
 ssd_loss = SSDLoss(neg_pos_ratio=3, n_neg_min=0, alpha=1.0)
