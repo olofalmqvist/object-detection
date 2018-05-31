@@ -260,7 +260,7 @@ model_checkpoint = ModelCheckpoint(filepath='ssd300_pascal_07+12_epoch-{epoch:02
                                    save_best_only=True,
                                    save_weights_only=False,
                                    mode='auto',
-                                   period=1)
+                                   period=5)
 #model_checkpoint.best = 
 
 csv_logger = CSVLogger(filename='ssd300_pascal_07+12_training_log.csv',
@@ -279,7 +279,7 @@ callbacks = [model_checkpoint,
 
 # If you're resuming a previous training, set `initial_epoch` and `final_epoch` accordingly.
 initial_epoch   = 0
-final_epoch     = 120
+final_epoch     = 5
 steps_per_epoch = 1000
 
 history = model.fit_generator(generator=train_generator,

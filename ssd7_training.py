@@ -86,8 +86,8 @@ model.compile(optimizer=adam, loss=ssd_loss.compute_loss)
 
 # Optional: If you have enough memory, consider loading the images into memory for the reasons explained above.
 
-train_dataset = DataGenerator(load_images_into_memory=False, hdf5_dataset_path=None)
-val_dataset = DataGenerator(load_images_into_memory=False, hdf5_dataset_path=None)
+train_dataset = DataGenerator(load_images_into_memory=False, hdf5_dataset_path='dataset_udacity_traffic_train.h5')
+val_dataset = DataGenerator(load_images_into_memory=False, hdf5_dataset_path='dataset_udacity_traffic_val.h5')
 
 # 2: Parse the image and label lists for the training and validation datasets.
 
@@ -114,7 +114,7 @@ val_dataset.parse_csv(images_dir=images_dir,
 # speed up the training. Doing this is not relevant in case you activated the `load_images_into_memory`
 # option in the constructor, because in that cas the images are in memory already anyway. If you don't
 # want to create HDF5 datasets, comment out the subsequent two function calls.
-
+"""
 train_dataset.create_hdf5_dataset(file_path='dataset_udacity_traffic_train.h5',
                                   resize=False,
                                   variable_image_size=True,
@@ -124,6 +124,7 @@ val_dataset.create_hdf5_dataset(file_path='dataset_udacity_traffic_val.h5',
                                 resize=False,
                                 variable_image_size=True,
                                 verbose=True)
+"""
 
 # Get the number of samples in the training and validations datasets.
 train_dataset_size = train_dataset.get_dataset_size()
@@ -204,7 +205,7 @@ model_checkpoint = ModelCheckpoint(filepath='ssd7_epoch-{epoch:02d}_loss-{loss:.
                                    save_best_only=True,
                                    save_weights_only=False,
                                    mode='auto',
-                                   period=1)
+                                   period=5)
 
 csv_logger = CSVLogger(filename='ssd7_training_log.csv',
                        separator=',',
@@ -231,7 +232,7 @@ callbacks = [model_checkpoint,
 # TODO: Set the epochs to train for.
 # If you're resuming a previous training, set `initial_epoch` and `final_epoch` accordingly.
 initial_epoch   = 0
-final_epoch     = 20
+final_epoch     = 5
 steps_per_epoch = 1000
 
 history = model.fit_generator(generator=train_generator,
